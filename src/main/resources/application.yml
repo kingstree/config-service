@@ -14,8 +14,8 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/kingstree/bookshop/config-repo.git
+          uri: https://github.com/kingstree/config-repo.git
           default-label: main
-          timeout: 5
-          clone-on-start: true
-          force-pull: true
+          timeout: 5 #연결시잔을 너무 잡지 않도록 타임아웃
+          clone-on-start: true #저장소 복제가 서비스 시작시 이루어짐
+          force-pull: true # 설정서버가 항상 원격 저장소와 동일한 데이터를 새로 가져옴
