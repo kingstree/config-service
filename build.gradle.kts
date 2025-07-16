@@ -24,7 +24,7 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     implementation ("org.springframework.cloud:spring-cloud-config-server")
-
+    testImplementation ("org.assertj:assertj-core")
 }
 
 dependencyManagement {
@@ -35,7 +35,7 @@ dependencyManagement {
 }
 tasks.bootBuildImage {
     builder.set("paketobuildpacks/builder-jammy-java-tiny:0.0.46")
-    imagePlatform.set("linux/arm64")
+    //imagePlatform.set("linux/arm64")
     imageName.set(project.name)
     imageName.set("ghcr.io/kingstree/${project.name}:latest")   // ★ 레지스트리·계정 포함
     environment.put("BP_JVM_VERSION", "17")

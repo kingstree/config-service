@@ -7,6 +7,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
+import static org.assertj.core.api.Assertions.assertThat;
+import org.springframework.http.HttpStatus;
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class ConfigServiceApplicationTests {
 
@@ -25,3 +28,4 @@ class ConfigServiceApplicationTests {
         assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
 
+}
