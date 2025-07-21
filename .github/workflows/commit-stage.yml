@@ -3,7 +3,7 @@ on: push
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: bookshop/config-service
+  IMAGE_NAME: kingstree/config-service
   VERSION: latest
 
 jobs:
