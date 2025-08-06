@@ -6,7 +6,7 @@ plugins {
 
 group = "com.bookshop"
 version = "0.0.1-SNAPSHOT"
-
+extra.set("otelVersion", "1.33.3")
 val springCloudVersion = "2023.0.1" //사용할 클라우드 버전
 
 java {
@@ -24,6 +24,8 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     implementation ("org.springframework.cloud:spring-cloud-config-server")
+    runtimeOnly ("io.micrometer:micrometer-registry-prometheus")
+    runtimeOnly ("io.opentelemetry.javaagent:opentelemetry-javaagent:${property("otelVersion")}")
     testImplementation ("org.assertj:assertj-core")
 }
 
@@ -37,7 +39,7 @@ tasks.bootBuildImage {
     builder.set("paketobuildpacks/builder-jammy-java-tiny:0.0.46")
     //imagePlatform.set("linux/arm64")
     imageName.set(project.name)
-    imageName.set("ghcr.io/kingstree/${project.name}:latest")   // ★ 레지스트리·계정 포함
+    //imageName.set("ghcr.io/kingstree/${project.name}:latest")   // ★ 레지스트리·계정 포함
     environment.put("BP_JVM_VERSION", "17")
 
     docker {
